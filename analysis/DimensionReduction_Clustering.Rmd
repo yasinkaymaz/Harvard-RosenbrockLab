@@ -1,0 +1,51 @@
+---
+title: "DimensionReduction_Clustering"
+author: "Yasin Kaymaz"
+date: "1/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(DT)
+options(width = 80)
+source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
+```
+
+
+
+
+```{r echo=FALSE}
+load("~/data/GSE97930_FrontalCortex.seurat.Robj")
+Lake2018fc <- SeuratObj
+rm(SeuratObj)
+```
+
+## TSNE plots of **all Frontal Cortex** cells in the study 
+
+
+
+These plots show the level of expression diversity among all Frontal cortex cells. Cells are colored based on cell class.
+
+### Colored by subgroup labels
+
+```{r echo=FALSE, fig.height=8, fig.width=10}
+TSNEPlot(Lake2018fc, group.by="orig.ident",do.label = T)
+```
+
+Excitatory (Ex) and inhibitory (In) neuronal subtypes in the cortex; distinct cerebellar granule (Gran) cells and Purkinje (Purk)  neurons; and non-neuronal cells, including endothelial (End) cells,  smooth muscle cells or pericytes, astrocytes (Ast), oligodendrocytes  (Oli) and their precursor cells (OPCs), and microglia (Mic).
+
+
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.

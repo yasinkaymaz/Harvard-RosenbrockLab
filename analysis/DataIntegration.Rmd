@@ -1,0 +1,85 @@
+---
+title: "Data Analysis"
+author: "Yasin Kaymaz"
+date: "2/07/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(DT)
+options(width = 80)
+source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
+```
+
+# Summary
+
+<!-- Single cell data from Tasic et al. 2018 is from two separate regions of mouse brain, Anterior Lateral Motor cortex (ALM) and Primary Visual cortex (VISp). Total single cells sequenced are 10,068 and 15,413, respectively. -->
+
+<!-- The single cell data from Tasic et al. 2016 is total of 1,809 cells from Primary Visual cortex (VISp) of mouse brain. -->
+
+
+# Main Steps
+
+## Hook dataset
+
+  **Citation:** Hook, Paul W., Sarah A. McClymont, Gabrielle H. Cannon, William D. Law, A. Jennifer Morton, Loyal A. Goff, and Andrew S. McCallion. 2018. “Single-Cell RNA-Seq of Mouse Dopaminergic Neurons Informs Candidate Gene Selection for Sporadic Parkinson Disease.” American Journal of Human Genetics 102 (3): 427–46.
+
+
+### 1. Obtain the data
+
+	473 single cell RNA-Seq samples from sorted mouse Th-eGFP+ dopaminergic neurons collected at two timepoints from three distinct brain regions.
+	
+```{bash}
+#wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE108nnn/GSE108020/suppl/GSE108020_fpkm_table.txt.gz
+#unzip GSE108020_fpkm_table.txt.gz
+```
+
+After downloading the data, unzip the file of **FPKM** matrix for further analysis.
+
+<!-- ### 2. Filter out non-relevant genes prior to analysis. I took the filtration criteria from methods of Tasic et al., 2018. -->
+
+<!-- Filter out -->
+
+<!--   - Predicted gene models (gene names that start with Gm). -->
+<!--   - Genes from mitochondrial chromosome. -->
+<!--   - Ribosomal genes -->
+<!--   - Sex-specific genes (Here is how I determined the gender-specific genes: [Code](https://github.com/yasinkaymaz/Harvard-NissenLab/tree/master/code/Determine_genes_to_filter.R)) -->
+<!--   - Genes detected in less than 4 cells (min.cells = 4, Seurat) -->
+
+### 2. Filtration
+
+  - Filter out cells expressing less than 500 genes (min.genes = 500, Seurat)
+
+
+
+
+
+
+
+
+<!-- ## Tasic2016 dataset -->
+
+<!-- ### 1. Obtain the data -->
+
+<!-- ```{bash} -->
+<!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FClustering%5FResults%2Ecsv%2Egz -->
+<!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FRefSeq%5FTPM%2Ecsv%2Egz -->
+<!-- ``` -->
+
+
+For the processing details, please follow [Code](https://github.com/yasinkaymaz/Harvard-GillardonLab/tree/master/code/WP_codes.R)
+
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
