@@ -22,9 +22,7 @@ Hook2018 <- SeuratObj
 rm(SeuratObj)
 ```
 
-## TSNE plots of **all** cells in the study 
-
-
+## TSNE plots of **all** cells in the Hook 2018 study
 
 ### Colored by subgroup labels
 
