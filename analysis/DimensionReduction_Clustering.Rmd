@@ -17,28 +17,36 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 
 
 ```{r echo=FALSE}
-load("~/data/GSE97930_FrontalCortex.seurat.Robj")
-Lake2018fc <- SeuratObj
+load("~/data/Hook2018.seurat.Robj")
+Hook2018 <- SeuratObj
 rm(SeuratObj)
 ```
 
-## TSNE plots of **all Frontal Cortex** cells in the study 
+## TSNE plots of **all** cells in the study 
 
 
-
-These plots show the level of expression diversity among all Frontal cortex cells. Cells are colored based on cell class.
 
 ### Colored by subgroup labels
 
 ```{r echo=FALSE, fig.height=8, fig.width=10}
-TSNEPlot(Lake2018fc, group.by="orig.ident",do.label = T)
+TSNEPlot(Hook2018, group.by="res.1",do.label = T)
 ```
 
-Excitatory (Ex) and inhibitory (In) neuronal subtypes in the cortex; distinct cerebellar granule (Gran) cells and Purkinje (Purk)  neurons; and non-neuronal cells, including endothelial (End) cells,  smooth muscle cells or pericytes, astrocytes (Ast), oligodendrocytes  (Oli) and their precursor cells (OPCs), and microglia (Mic).
 
+### Expression distributions of **Gria1** and **Gria4**
 
+Gria1 = ["ENSMUSG00000020524.16"](https://useast.ensembl.org/Mus_musculus/Gene/Summary?g=ENSMUSG00000020524;r=11:57011387-57330244)
 
-.
+Gria4 = ["ENSMUSG00000025892.15"](https://useast.ensembl.org/Mus_musculus/Gene/Summary?g=ENSMUSG00000025892;r=9:4417896-4796234;mobileredirect=no)
+      
+```{r echo=FALSE, fig.height=8, fig.width=10}
+
+Gria1 <- "ENSMUSG00000020524.16"
+Gria4 <- "ENSMUSG00000025892.15"
+VlnPlot(object = Hook2018, features.plot = c(Gria1,Gria4), use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+
+```
+
 
 .
 
