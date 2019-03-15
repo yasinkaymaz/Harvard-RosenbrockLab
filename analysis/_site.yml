@@ -11,8 +11,10 @@ navbar:
       href: DataIntegration.html
     - text: "Clustering"
       href: DimensionReduction_Clustering.html
-    - text: "Contrasts"
-      href: Contrasts.html
+    - text: "Gene-Level-Contrasts"
+      href: Gene-Level-Contrasts.html
+    - text: "Isoform-Level-Contrasts"
+      href: Isoform-Level-Contrasts.html
   right:
     - icon: fa-github
       href: https://github.com/yasinkaymaz/Harvard-RosenbrockLab.git

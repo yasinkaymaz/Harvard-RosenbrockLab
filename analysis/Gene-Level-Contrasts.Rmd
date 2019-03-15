@@ -18,13 +18,13 @@ Hook2018 <- get(load("~/data/Hook2018.seurat.Robj"))
 
 ```
 
-### Gene expression distributions among cells in each group
+## Gene expression distributions among cells in each group
 
 After count processing and filtration, I group all cells based on mouse age, brain region, and cell subsets. Violin plots show normalized expression distribution of the given gene in each cell (black dots) binned in various groups. **y-axis is in log2 scale!**
 
 Genes of interest are **"Gria1"**,**"Gria4"**,**"Grm4"**, and **"Gpr83"**.
 
-#### Cells are grouped based on mouse age
+### Cells are grouped based on mouse age
 
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 genes <- c("Gria1","Gria4","Grm4", "Gpr83")
@@ -33,7 +33,7 @@ Hook2018 <- SetAllIdent(Hook2018, id = "age")
 VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
 ```
 
-#### Cells are grouped based on brain region
+### Cells are grouped based on brain region
 
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 
@@ -41,7 +41,7 @@ Hook2018 <- SetAllIdent(Hook2018, id = "region")
 VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
 ```
 
-#### Cells are grouped based on cell subset
+### Cells are grouped based on cell subset
 
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 

@@ -333,7 +333,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -342,7 +342,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#report"> Report <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -354,7 +354,7 @@ div.section {
 <strong>Last updated:</strong> 2019-03-15
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Harvard-RosenbrockLab/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -370,12 +370,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -430,10 +430,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/ae57569e270c66fd4573b8301c8dcb0e3ba1c563" target="_blank">ae57569</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeabeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42targetblankabeab71a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/abeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42" target="_blank">abeab71</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeabeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42targetblankabeab71a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -463,8 +463,10 @@ Untracked files:
 
 Unstaged changes:
     Deleted:    analysis/Contrasts.Rmd
+    Modified:   analysis/Gene-Level-Contrasts.Rmd
     Deleted:    analysis/ToDos.Rmd
     Modified:   analysis/_site.yml
+    Modified:   analysis/about.Rmd
     Modified:   code/WP_codes.R
 
 </code></pre>
@@ -504,6 +506,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/abeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42/docs/Gene-Level-Contrasts.html" target="_blank">abeab71</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -562,12 +581,12 @@ isoform results
 </div>
 </div>
 </div>
-<div id="gene-expression-distributions-among-cells-in-each-group" class="section level3">
-<h3>Gene expression distributions among cells in each group</h3>
+<div id="gene-expression-distributions-among-cells-in-each-group" class="section level2">
+<h2>Gene expression distributions among cells in each group</h2>
 <p>After count processing and filtration, I group all cells based on mouse age, brain region, and cell subsets. Violin plots show normalized expression distribution of the given gene in each cell (black dots) binned in various groups. <strong>y-axis is in log2 scale!</strong></p>
 <p>Genes of interest are <strong>“Gria1”</strong>,<strong>“Gria4”</strong>,<strong>“Grm4”</strong>, and <strong>“Gpr83”</strong>.</p>
-<div id="cells-are-grouped-based-on-mouse-age" class="section level4">
-<h4>Cells are grouped based on mouse age</h4>
+<div id="cells-are-grouped-based-on-mouse-age" class="section level3">
+<h3>Cells are grouped based on mouse age</h3>
 <p><img src="figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
@@ -593,6 +612,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/abeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42/docs/figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" target="_blank">abeab71</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" target="_blank">1abd5c7</a>
 </td>
 <td>
@@ -607,13 +637,87 @@ Yasin Kaymaz
 </div>
 </div>
 </div>
-<div id="cells-are-grouped-based-on-brain-region" class="section level4">
-<h4>Cells are grouped based on brain region</h4>
+<div id="cells-are-grouped-based-on-brain-region" class="section level3">
+<h3>Cells are grouped based on brain region</h3>
 <p><img src="figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-2-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/abeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42/docs/figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-2-1.png" target="_blank">abeab71</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="cells-are-grouped-based-on-cell-subset" class="section level4">
-<h4>Cells are grouped based on cell subset</h4>
+</div>
+</div>
+<div id="cells-are-grouped-based-on-cell-subset" class="section level3">
+<h3>Cells are grouped based on cell subset</h3>
 <p><img src="figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-3-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/abeab71fd4bbef798cc1a0b07b8e5a5c9a5d4c42/docs/figure/Gene-Level-Contrasts.Rmd/unnamed-chunk-3-1.png" target="_blank">abeab71</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>.</p>
 <p>.</p>
 <p>.</p>
