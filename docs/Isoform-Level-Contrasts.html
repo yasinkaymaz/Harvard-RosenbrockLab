@@ -12,7 +12,7 @@
 <meta name="author" content="Yasin Kaymaz" />
 
 
-<title>Isoform-level-Contrasts</title>
+<title>Isoform level Contrasts</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -324,7 +324,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">Isoform-level-Contrasts</h1>
+<h1 class="title toc-ignore">Isoform level Contrasts</h1>
 <h4 class="author"><em>Yasin Kaymaz</em></h4>
 <h4 class="date"><em>1/31/2019</em></h4>
 
@@ -430,10 +430,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreedbac3ec9e92a5a2231d580486773676e91d59027targetblankdbac3eca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/dbac3ec9e92a5a2231d580486773676e91d59027" target="_blank">dbac3ec</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/ae57569e270c66fd4573b8301c8dcb0e3ba1c563" target="_blank">ae57569</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreedbac3ec9e92a5a2231d580486773676e91d59027targetblankdbac3eca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -447,17 +447,8 @@ Ignored files:
     Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  Genes-Violins.pdf
-    Untracked:  Hook2018.plots.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.mode.-stats.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-crosscheck.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-probability-projection.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-quality.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-stats.pdf
-    Untracked:  Hook2018.seurat.Robj
-    Untracked:  Hook_data_Rsem_processing_rc.R
+    Untracked:  code/Hook_data_Rsem_processing_rc.R
     Untracked:  data/Gria1.transcripts.fasta
-    Untracked:  docs/figure/Gene-Level-Contrasts.Rmd/
     Untracked:  output/Gpr83.Isoplots.pdf
     Untracked:  output/Gria1.Isoplots.pdf
     Untracked:  output/Gria4.Isoplots.pdf
@@ -518,6 +509,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/ae57569e270c66fd4573b8301c8dcb0e3ba1c563/analysis/Isoform-Level-Contrasts.Rmd" target="_blank">ae57569</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+isoform results
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/1abd5c7384621cc855e47102629e036ba9e275b0/docs/Isoform-Level-Contrasts.html" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/dbac3ec9e92a5a2231d580486773676e91d59027/analysis/Isoform-Level-Contrasts.Rmd" target="_blank">dbac3ec</a>
 </td>
 <td>
@@ -537,48 +562,342 @@ isoform results
 </div>
 </div>
 </div>
+<div id="isoform-expression-distributions-among-cells-in-each-group" class="section level2">
+<h2>Isoform expression distributions among cells in each group</h2>
+<p>Violin plots show normalized expression distribution of the isoform of the given gene in each cell (black dots) binned in various groups. <strong>y-axis is in log2 scale!</strong></p>
+</div>
 <div id="expression-distributions-based-on-brain-regions" class="section level2">
 <h2>Expression distributions based on <strong>brain regions</strong></h2>
-<p>Three brain regions cells are taken from:</p>
-<p><strong>midbrain, MB</strong>; <strong>forebrain, FB</strong>; <strong>olfactory bulb, OB</strong>;</p>
 <div id="gria1-isoforms" class="section level3">
 <h3><strong>Gria1 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gria4-isoforms" class="section level3">
 <h3><strong>Gria4 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-2-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-2-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="grm4-isoforms" class="section level3">
 <h3><strong>Grm4 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-3-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-3-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gpr83-isoforms" class="section level3">
 <h3><strong>Gpr83 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-4-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-4-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="expression-distributions-based-on-cell-subsets-identified-in-hook-et-al." class="section level2">
 <h2>Expression distributions based on <strong>cell subsets</strong> identified in Hook et al.</h2>
-<div class="figure">
-<img src="Hook.cell.populations.png" />
-
-</div>
 <div id="gria1-isoforms-1" class="section level3">
 <h3><strong>Gria1 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-5-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-5-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gria4-isoforms-1" class="section level3">
 <h3><strong>Gria4 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-6-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-6-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="grm4-isoforms-1" class="section level3">
 <h3><strong>Grm4 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-7-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-7-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gpr83-isoforms-1" class="section level3">
 <h3><strong>Gpr83 isoforms</strong>:</h3>
 <p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-8-1.png" width="1920" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-8-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>.</p>
 <p>.</p>
 <p>.</p>

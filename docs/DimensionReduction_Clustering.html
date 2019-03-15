@@ -430,10 +430,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreedbac3ec9e92a5a2231d580486773676e91d59027targetblankdbac3eca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/dbac3ec9e92a5a2231d580486773676e91d59027" target="_blank">dbac3ec</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/ae57569e270c66fd4573b8301c8dcb0e3ba1c563" target="_blank">ae57569</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreedbac3ec9e92a5a2231d580486773676e91d59027targetblankdbac3eca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeae57569e270c66fd4573b8301c8dcb0e3ba1c563targetblankae57569a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -447,17 +447,8 @@ Ignored files:
     Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  Genes-Violins.pdf
-    Untracked:  Hook2018.plots.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.mode.-stats.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-crosscheck.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-probability-projection.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-quality.pdf
-    Untracked:  Hook2018.rfcv.predictions.w-singleZeisel-rank3.prediction-stats.pdf
-    Untracked:  Hook2018.seurat.Robj
-    Untracked:  Hook_data_Rsem_processing_rc.R
+    Untracked:  code/Hook_data_Rsem_processing_rc.R
     Untracked:  data/Gria1.transcripts.fasta
-    Untracked:  docs/figure/Isoform-Level-Contrasts.Rmd/
     Untracked:  output/Gpr83.Isoplots.pdf
     Untracked:  output/Gria1.Isoplots.pdf
     Untracked:  output/Gria4.Isoplots.pdf
@@ -513,6 +504,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/ae57569e270c66fd4573b8301c8dcb0e3ba1c563/analysis/DimensionReduction_Clustering.Rmd" target="_blank">ae57569</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+isoform results
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/1abd5c7384621cc855e47102629e036ba9e275b0/docs/DimensionReduction_Clustering.html" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -692,8 +717,17 @@ initial commit
 </div>
 <div id="tsne-plots-of-all-cells-in-the-hook-2018-study" class="section level2">
 <h2>TSNE plots of <strong>all</strong> cells in the Hook 2018 study</h2>
-<div id="colored-by-subgroup-labels" class="section level3">
-<h3>Colored by subgroup labels</h3>
+<p>In each of these plots, colored dots represent individual cells. Analysis was done using only highly variable genes. Cell annotation are projected from original publication.</p>
+<p>Three brain regions cells are taken from:</p>
+<p><strong>midbrain, MB</strong>; <strong>forebrain, FB</strong>; <strong>olfactory bulb, OB</strong>;</p>
+<div class="figure">
+<img src="Hook.cell.populations.png" />
+
+</div>
+<div id="pca-plots" class="section level3">
+<h3>PCA plots</h3>
+<div id="cells-are-colored-by-mouse-age-brain-region-and-cell-subsets-respectively." class="section level4">
+<h4>Cells are colored by mouse age, brain region, and cell subsets, respectively.</h4>
 <p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
@@ -717,6 +751,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-1.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/ced17eace8265f1157c883630f55e81bf2191946/docs/figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-1.png" target="_blank">ced17ea</a>
@@ -743,7 +788,127 @@ Yasin Kaymaz
 </table>
 </div>
 </div>
-<p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-2.png" width="960" style="display: block; margin: auto;" /><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-3.png" width="960" style="display: block; margin: auto;" /><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-4.png" width="960" style="display: block; margin: auto;" /><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-5.png" width="960" style="display: block; margin: auto;" /><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-6.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-2.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-2">
+Past versions of unnamed-chunk-2-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-2.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-3.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-3">
+Past versions of unnamed-chunk-2-3.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1abd5c7384621cc855e47102629e036ba9e275b0/docs/figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-2-3.png" target="_blank">1abd5c7</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="tsne-plots" class="section level3">
+<h3>tSNE plots</h3>
+<div id="cells-are-colored-by-mouse-age-brain-region-and-cell-subsets-respectively.-1" class="section level4">
+<h4>Cells are colored by mouse age, brain region, and cell subsets, respectively.</h4>
+<p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-3-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/ced17eace8265f1157c883630f55e81bf2191946/docs/figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-3-1.png" target="_blank">ced17ea</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-05
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-3-2.png" width="960" style="display: block; margin: auto;" /><img src="figure/DimensionReduction_Clustering.Rmd/unnamed-chunk-3-3.png" width="960" style="display: block; margin: auto;" /></p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
@@ -820,6 +985,7 @@ loaded via a namespace (and not attached):
 [121] rpart_4.1-13        class_7.3-14        rmarkdown_1.10     
 [124] segmented_0.5-3.0   Rtsne_0.15          git2r_0.24.0       
 [127] lubridate_1.7.4     base64enc_0.1-3    </code></pre>
+</div>
 </div>
 </div>
 </div>
