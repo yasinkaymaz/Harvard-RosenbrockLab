@@ -1,5 +1,5 @@
 ---
-title: "Isoform-level-Contrasts"
+title: "Isoform level Contrasts"
 author: "Yasin Kaymaz"
 date: "1/31/2019"
 output:
@@ -18,16 +18,11 @@ Hook2018iso <- get(load("~/data/Hook2018iso.seurat.Robj"))
 Hook2018iso <- get(load("~/data/Hook2018iso.seurat.Robj"))
 ```
 
+## Isoform expression distributions among cells in each group
 
+Violin plots show normalized expression distribution of the isoform of the given gene in each cell (black dots) binned in various groups. **y-axis is in log2 scale!**
 
 ## Expression distributions based on **brain regions**
-
-Three brain regions cells are taken from: 
-
-**midbrain, MB**; 
-**forebrain, FB**; 
-**olfactory bulb, OB**;
-
 
 ### **Gria1 isoforms**:
 
@@ -69,7 +64,6 @@ VlnPlot(object = Hook2018iso, features.plot = transcripts, use.raw = TRUE, y.log
 
 ## Expression distributions based on **cell subsets** identified in Hook et al.
 
-![](Hook.cell.populations.png)
 
 ### **Gria1 isoforms**:
 

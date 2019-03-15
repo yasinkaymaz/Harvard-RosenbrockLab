@@ -13,26 +13,45 @@ options(width = 80)
 source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
 ```
 
-
-
-
 ```{r echo=FALSE}
 load("~/data/Hook2018.seurat.Robj")
 ```
 
 ## TSNE plots of **all** cells in the Hook 2018 study
 
-### Colored by subgroup labels
+In each of these plots, colored dots represent individual cells. Analysis was done using only highly variable genes. Cell annotation are projected from original publication.
+
+
+Three brain regions cells are taken from: 
+
+**midbrain, MB**; 
+**forebrain, FB**; 
+**olfactory bulb, OB**;
+
+
+![](Hook.cell.populations.png)
+
+
+### PCA plots 
+
+#### Cells are colored by mouse age, brain region, and cell subsets, respectively.
 
 ```{r echo=FALSE, fig.height=8, fig.width=10}
 
 PCAPlot(object = Hook2018,group.by="age",pt.size=2)
 PCAPlot(object = Hook2018,group.by="region",pt.size=2)
-PCAPlot(object = Hook2018,group.by="subset")
-TSNEPlot(object = Hook2018,group.by="age")
-TSNEPlot(object = Hook2018,group.by="region")
-TSNEPlot(object = Hook2018,group.by="subset")
+PCAPlot(object = Hook2018,group.by="subset",pt.size=2)
+```
 
+
+### tSNE plots 
+
+#### Cells are colored by mouse age, brain region, and cell subsets, respectively.
+
+```{r echo=FALSE, fig.height=8, fig.width=10}
+TSNEPlot(object = Hook2018,group.by="age",pt.size=2)
+TSNEPlot(object = Hook2018,group.by="region",pt.size=2)
+TSNEPlot(object = Hook2018,group.by="subset",pt.size=2)
 ```
 
 .
