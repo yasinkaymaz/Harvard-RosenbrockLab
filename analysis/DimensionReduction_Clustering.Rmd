@@ -17,7 +17,7 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 load("~/data/Hook2018.seurat.Robj")
 ```
 
-## TSNE plots of **all** cells in the Hook 2018 study
+## Clustering analysis of all cells in the Hook 2018 study
 
 In each of these plots, colored dots represent individual cells. Analysis was done using only highly variable genes. Cell annotation are projected from original publication.
 
@@ -32,7 +32,7 @@ Three brain regions cells are taken from:
 ![](Hook.cell.populations.png)
 
 
-### PCA plots 
+### **PCA plots**
 
 #### Cells are colored by mouse age, brain region, and cell subsets, respectively.
 
@@ -44,7 +44,7 @@ PCAPlot(object = Hook2018,group.by="subset",pt.size=2)
 ```
 
 
-### tSNE plots 
+### **tSNE plots**
 
 #### Cells are colored by mouse age, brain region, and cell subsets, respectively.
 
