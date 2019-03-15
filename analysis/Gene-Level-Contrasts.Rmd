@@ -1,0 +1,53 @@
+---
+title: "Contrasts"
+author: "Yasin Kaymaz"
+date: "1/31/2019"
+output:
+  html_document:
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(DT)
+library(tidyverse)
+source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
+#source("code/functions.R")
+Hook2018 <- get(load("~/data/Hook2018.seurat.Robj"))
+
+```
+
+
+
+### Expression distributions of **Gria1** and **Gria4**
+
+
+      
+```{r echo=FALSE, fig.height=8, fig.width=10}
+genes <- c("Gria1","Gria4","Grm4", "Gpr83")
+
+Hook2018 <- SetAllIdent(Hook2018, id = "age")
+VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+
+Hook2018 <- SetAllIdent(Hook2018, id = "region")
+VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+
+Hook2018 <- SetAllIdent(Hook2018, id = "subset")
+VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+
+```
+
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+

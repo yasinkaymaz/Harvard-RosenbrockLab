@@ -38,6 +38,12 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 
 After downloading the data, unzip the file of **FPKM** matrix for further analysis.
 
+
+#### Download raw fastq files from [SRA](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP126648)
+
+
+
+
 <!-- ### 2. Filter out non-relevant genes prior to analysis. I took the filtration criteria from methods of Tasic et al., 2018. -->
 
 <!-- Filter out -->
@@ -67,6 +73,15 @@ After downloading the data, unzip the file of **FPKM** matrix for further analys
 <!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FClustering%5FResults%2Ecsv%2Egz -->
 <!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FRefSeq%5FTPM%2Ecsv%2Egz -->
 <!-- ``` -->
+
+### Genome alignment
+
+A. Get reference data from Gencode
+
+Reference mouse genome:
+ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/GRCm38.primary_assembly.genome.fa.gz
+
+Comprehensive gene annotation: 	ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/gencode.vM20.annotation.gtf.gz
 
 
 For the processing details, please follow [Code](https://github.com/yasinkaymaz/Harvard-GillardonLab/tree/master/code/WP_codes.R)

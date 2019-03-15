@@ -18,8 +18,6 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 
 ```{r echo=FALSE}
 load("~/data/Hook2018.seurat.Robj")
-Hook2018 <- SeuratObj
-rm(SeuratObj)
 ```
 
 ## TSNE plots of **all** cells in the Hook 2018 study
@@ -27,24 +25,15 @@ rm(SeuratObj)
 ### Colored by subgroup labels
 
 ```{r echo=FALSE, fig.height=8, fig.width=10}
-TSNEPlot(Hook2018, group.by="res.1",do.label = T)
-```
 
-
-### Expression distributions of **Gria1** and **Gria4**
-
-Gria1 = ["ENSMUSG00000020524.16"](https://useast.ensembl.org/Mus_musculus/Gene/Summary?g=ENSMUSG00000020524;r=11:57011387-57330244)
-
-Gria4 = ["ENSMUSG00000025892.15"](https://useast.ensembl.org/Mus_musculus/Gene/Summary?g=ENSMUSG00000025892;r=9:4417896-4796234;mobileredirect=no)
-      
-```{r echo=FALSE, fig.height=8, fig.width=10}
-
-Gria1 <- "ENSMUSG00000020524.16"
-Gria4 <- "ENSMUSG00000025892.15"
-VlnPlot(object = Hook2018, features.plot = c(Gria1,Gria4), use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+PCAPlot(object = Hook2018,group.by="age",pt.size=2)
+PCAPlot(object = Hook2018,group.by="region",pt.size=2)
+PCAPlot(object = Hook2018,group.by="subset")
+TSNEPlot(object = Hook2018,group.by="age")
+TSNEPlot(object = Hook2018,group.by="region")
+TSNEPlot(object = Hook2018,group.by="subset")
 
 ```
-
 
 .
 
