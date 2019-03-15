@@ -12,7 +12,7 @@
 <meta name="author" content="Yasin Kaymaz" />
 
 
-<title>Data Analysis</title>
+<title>Isoform-level-Contrasts</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -324,9 +324,9 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">Data Analysis</h1>
+<h1 class="title toc-ignore">Isoform-level-Contrasts</h1>
 <h4 class="author"><em>Yasin Kaymaz</em></h4>
-<h4 class="date"><em>2/07/2019</em></h4>
+<h4 class="date"><em>1/31/2019</em></h4>
 
 </div>
 
@@ -457,7 +457,7 @@ Untracked files:
     Untracked:  Hook2018.seurat.Robj
     Untracked:  Hook_data_Rsem_processing_rc.R
     Untracked:  data/Gria1.transcripts.fasta
-    Untracked:  docs/figure/Isoform-Level-Contrasts.Rmd/
+    Untracked:  docs/figure/Gene-Level-Contrasts.Rmd/
     Untracked:  output/Gpr83.Isoplots.pdf
     Untracked:  output/Gria1.Isoplots.pdf
     Untracked:  output/Gria4.Isoplots.pdf
@@ -518,7 +518,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/dbac3ec9e92a5a2231d580486773676e91d59027/analysis/DataIntegration.Rmd" target="_blank">dbac3ec</a>
+<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/dbac3ec9e92a5a2231d580486773676e91d59027/analysis/Isoform-Level-Contrasts.Rmd" target="_blank">dbac3ec</a>
 </td>
 <td>
 Yasin Kaymaz
@@ -530,125 +530,6 @@ Yasin Kaymaz
 isoform results
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/49c0cce5ab49304abe5fb3cf324ab3edd1e8355e/docs/DataIntegration.html" target="_blank">49c0cce</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-06
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/3d2c5f6666b2e26ad1ed5e6479d5c31cdecda996/docs/DataIntegration.html" target="_blank">3d2c5f6</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-06
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/f4d06054fea80c1a3c4ab349295b36e18e54bae7/docs/DataIntegration.html" target="_blank">f4d0605</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/ced17eace8265f1157c883630f55e81bf2191946/docs/DataIntegration.html" target="_blank">ced17ea</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-05
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/c534f45cce704f6c1d9aacf281b06d838d90eece/docs/DataIntegration.html" target="_blank">c534f45</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/a1bf7eea3e9640238006c44042c86549abf9fa8d/docs/DataIntegration.html" target="_blank">a1bf7ee</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/blob/1be73852901af37590079568aff880ddd1a15621/analysis/DataIntegration.Rmd" target="_blank">1be7385</a>
-</td>
-<td>
-Yasin Kaymaz
-</td>
-<td>
-2019-03-04
-</td>
-<td>
-initial commit
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -656,57 +537,55 @@ initial commit
 </div>
 </div>
 </div>
-<div id="summary" class="section level1">
-<h1>Summary</h1>
-<!-- Single cell data from Tasic et al. 2018 is from two separate regions of mouse brain, Anterior Lateral Motor cortex (ALM) and Primary Visual cortex (VISp). Total single cells sequenced are 10,068 and 15,413, respectively. -->
-<!-- The single cell data from Tasic et al. 2016 is total of 1,809 cells from Primary Visual cortex (VISp) of mouse brain. -->
+<div id="expression-distributions-based-on-brain-regions" class="section level2">
+<h2>Expression distributions based on <strong>brain regions</strong></h2>
+<p>Three brain regions cells are taken from:</p>
+<p><strong>midbrain, MB</strong>; <strong>forebrain, FB</strong>; <strong>olfactory bulb, OB</strong>;</p>
+<div id="gria1-isoforms" class="section level3">
+<h3><strong>Gria1 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-1-1.png" width="1920" style="display: block; margin: auto;" /></p>
 </div>
-<div id="main-steps" class="section level1">
-<h1>Main Steps</h1>
-<div id="hook-dataset" class="section level2">
-<h2>Hook dataset</h2>
-<p><strong>Citation:</strong> Hook, Paul W., Sarah A. McClymont, Gabrielle H. Cannon, William D. Law, A. Jennifer Morton, Loyal A. Goff, and Andrew S. McCallion. 2018. “Single-Cell RNA-Seq of Mouse Dopaminergic Neurons Informs Candidate Gene Selection for Sporadic Parkinson Disease.” American Journal of Human Genetics 102 (3): 427–46.</p>
-<div id="obtain-the-data" class="section level3">
-<h3>1. Obtain the data</h3>
-<pre><code>473 single cell RNA-Seq samples from sorted mouse Th-eGFP+ dopaminergic neurons collected at two timepoints from three distinct brain regions.</code></pre>
-<pre class="bash"><code>#wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE108nnn/GSE108020/suppl/GSE108020_fpkm_table.txt.gz
-#unzip GSE108020_fpkm_table.txt.gz</code></pre>
-<p>After downloading the data, unzip the file of <strong>FPKM</strong> matrix for further analysis.</p>
-<div id="download-raw-fastq-files-from-sra" class="section level4">
-<h4>Download raw fastq files from <a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP126648">SRA</a></h4>
-<!-- ### 2. Filter out non-relevant genes prior to analysis. I took the filtration criteria from methods of Tasic et al., 2018. -->
-<!-- Filter out -->
-<!--   - Predicted gene models (gene names that start with Gm). -->
-<!--   - Genes from mitochondrial chromosome. -->
-<!--   - Ribosomal genes -->
-<!--   - Sex-specific genes (Here is how I determined the gender-specific genes: [Code](https://github.com/yasinkaymaz/Harvard-NissenLab/tree/master/code/Determine_genes_to_filter.R)) -->
-<!--   - Genes detected in less than 4 cells (min.cells = 4, Seurat) -->
+<div id="gria4-isoforms" class="section level3">
+<h3><strong>Gria4 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-2-1.png" width="1920" style="display: block; margin: auto;" /></p>
+</div>
+<div id="grm4-isoforms" class="section level3">
+<h3><strong>Grm4 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-3-1.png" width="1920" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gpr83-isoforms" class="section level3">
+<h3><strong>Gpr83 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-4-1.png" width="1920" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<div id="filtration" class="section level3">
-<h3>2. Filtration</h3>
-<ul>
-<li>Filter out cells expressing less than 500 genes (min.genes = 500, Seurat)</li>
-</ul>
-<!-- ## Tasic2016 dataset -->
-<!-- ### 1. Obtain the data -->
-<!-- ```{bash} -->
-<!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FClustering%5FResults%2Ecsv%2Egz -->
-<!-- #wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE71585&format=file&file=GSE71585%5FRefSeq%5FTPM%2Ecsv%2Egz -->
-<!-- ``` -->
+<div id="expression-distributions-based-on-cell-subsets-identified-in-hook-et-al." class="section level2">
+<h2>Expression distributions based on <strong>cell subsets</strong> identified in Hook et al.</h2>
+<div class="figure">
+<img src="Hook.cell.populations.png" />
+
 </div>
-<div id="genome-alignment" class="section level3">
-<h3>Genome alignment</h3>
-<p>A. Get reference data from Gencode</p>
-<p>Reference mouse genome: <a href="ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/GRCm38.primary_assembly.genome.fa.gz" class="uri">ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/GRCm38.primary_assembly.genome.fa.gz</a></p>
-<p>Comprehensive gene annotation: <a href="ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/gencode.vM20.annotation.gtf.gz" class="uri">ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M20/gencode.vM20.annotation.gtf.gz</a></p>
-<p>For the processing details, please follow <a href="https://github.com/yasinkaymaz/Harvard-GillardonLab/tree/master/code/WP_codes.R">Code</a></p>
+<div id="gria1-isoforms-1" class="section level3">
+<h3><strong>Gria1 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-5-1.png" width="1920" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gria4-isoforms-1" class="section level3">
+<h3><strong>Gria4 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-6-1.png" width="1920" style="display: block; margin: auto;" /></p>
+</div>
+<div id="grm4-isoforms-1" class="section level3">
+<h3><strong>Grm4 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-7-1.png" width="1920" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gpr83-isoforms-1" class="section level3">
+<h3><strong>Gpr83 isoforms</strong>:</h3>
+<p><img src="figure/Isoform-Level-Contrasts.Rmd/unnamed-chunk-8-1.png" width="1920" style="display: block; margin: auto;" /></p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
 <p>.</p>
-. <br> <br>
+<p>.</p>
+<br> <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
@@ -729,9 +608,9 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] forcats_0.4.0   stringr_1.4.0   purrr_0.3.1     readr_1.3.1    
- [5] tidyr_0.8.3     tibble_2.0.1    tidyverse_1.2.1 dplyr_0.8.0.1  
- [9] Seurat_2.3.4    Matrix_1.2-14   cowplot_0.9.4   here_0.1       
+ [1] Seurat_2.3.4    Matrix_1.2-14   cowplot_0.9.4   here_0.1       
+ [5] forcats_0.4.0   stringr_1.4.0   dplyr_0.8.0.1   purrr_0.3.1    
+ [9] readr_1.3.1     tidyr_0.8.3     tibble_2.0.1    tidyverse_1.2.1
 [13] DT_0.5          plotly_4.8.0    ggplot2_3.1.0  
 
 loaded via a namespace (and not attached):
@@ -751,34 +630,33 @@ loaded via a namespace (and not attached):
  [40] metap_1.1           dtw_1.20-1          viridisLite_0.3.0  
  [43] htmlTable_1.13.1    reticulate_1.11.1   foreign_0.8-70     
  [46] bit_1.1-14          proxy_0.4-23        mclust_5.4.3       
- [49] SDMTools_1.1-221    Formula_1.2-3       stats4_3.5.0       
- [52] tsne_0.1-3          htmlwidgets_1.3     httr_1.4.0         
+ [49] SDMTools_1.1-221    Formula_1.2-3       tsne_0.1-3         
+ [52] stats4_3.5.0        htmlwidgets_1.3     httr_1.4.0         
  [55] gplots_3.0.1.1      RColorBrewer_1.1-2  fpc_2.1-11.1       
  [58] acepack_1.4.1       modeltools_0.2-22   ica_1.0-2          
  [61] pkgconfig_2.0.2     R.methodsS3_1.7.1   flexmix_2.3-15     
- [64] nnet_7.3-12         tidyselect_0.2.5    rlang_0.3.1        
- [67] reshape2_1.4.3      munsell_0.5.0       cellranger_1.1.0   
- [70] tools_3.5.0         cli_1.0.1           generics_0.0.2     
- [73] broom_0.5.1         ggridges_0.5.1      evaluate_0.10.1    
- [76] yaml_2.2.0          npsurv_0.4-0        knitr_1.20         
- [79] bit64_0.9-7         fs_1.2.6            fitdistrplus_1.0-14
- [82] robustbase_0.93-3   caTools_1.17.1.2    RANN_2.6.1         
- [85] pbapply_1.4-0       nlme_3.1-137        whisker_0.3-2      
- [88] R.oo_1.22.0         xml2_1.2.0          hdf5r_1.0.1        
- [91] compiler_3.5.0      rstudioapi_0.9.0    png_0.1-7          
- [94] lsei_1.2-0          stringi_1.2.4       lattice_0.20-35    
- [97] trimcluster_0.1-2.1 pillar_1.3.1        Rdpack_0.10-1      
-[100] lmtest_0.9-36       data.table_1.12.0   bitops_1.0-6       
-[103] irlba_2.3.3         gbRd_0.4-11         R6_2.4.0           
-[106] latticeExtra_0.6-28 KernSmooth_2.23-15  gridExtra_2.3      
-[109] codetools_0.2-15    MASS_7.3-50         gtools_3.8.1       
-[112] assertthat_0.2.0    rprojroot_1.3-2     withr_2.1.2        
-[115] diptest_0.75-7      parallel_3.5.0      doSNOW_1.0.16      
-[118] hms_0.4.2           grid_3.5.0          rpart_4.1-13       
-[121] class_7.3-14        rmarkdown_1.10      segmented_0.5-3.0  
-[124] Rtsne_0.15          git2r_0.24.0        lubridate_1.7.4    
-[127] base64enc_0.1-3    </code></pre>
-</div>
+ [64] nnet_7.3-12         labeling_0.3        reshape2_1.4.3     
+ [67] tidyselect_0.2.5    rlang_0.3.1         munsell_0.5.0      
+ [70] cellranger_1.1.0    tools_3.5.0         cli_1.0.1          
+ [73] generics_0.0.2      broom_0.5.1         ggridges_0.5.1     
+ [76] evaluate_0.10.1     yaml_2.2.0          npsurv_0.4-0       
+ [79] knitr_1.20          bit64_0.9-7         fs_1.2.6           
+ [82] fitdistrplus_1.0-14 robustbase_0.93-3   caTools_1.17.1.2   
+ [85] RANN_2.6.1          pbapply_1.4-0       nlme_3.1-137       
+ [88] whisker_0.3-2       R.oo_1.22.0         xml2_1.2.0         
+ [91] hdf5r_1.0.1         compiler_3.5.0      rstudioapi_0.9.0   
+ [94] png_0.1-7           lsei_1.2-0          stringi_1.2.4      
+ [97] lattice_0.20-35     trimcluster_0.1-2.1 pillar_1.3.1       
+[100] Rdpack_0.10-1       lmtest_0.9-36       data.table_1.12.0  
+[103] bitops_1.0-6        irlba_2.3.3         gbRd_0.4-11        
+[106] R6_2.4.0            latticeExtra_0.6-28 KernSmooth_2.23-15 
+[109] gridExtra_2.3       codetools_0.2-15    MASS_7.3-50        
+[112] gtools_3.8.1        assertthat_0.2.0    rprojroot_1.3-2    
+[115] withr_2.1.2         diptest_0.75-7      parallel_3.5.0     
+[118] doSNOW_1.0.16       hms_0.4.2           grid_3.5.0         
+[121] rpart_4.1-13        class_7.3-14        rmarkdown_1.10     
+[124] segmented_0.5-3.0   Rtsne_0.15          git2r_0.24.0       
+[127] lubridate_1.7.4     base64enc_0.1-3    </code></pre>
 </div>
 </div>
 </div>
