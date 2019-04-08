@@ -64,7 +64,7 @@ Using Rsem-STAR pipeline, I aligned the reads to reference transcriptome and qua
 
 #### For the processing details, please follow
 
-[Code](https://github.com/yasinkaymaz/Harvard-GillardonLab/tree/master/code/WP_codes.R)
+[Code](https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/master/code/WP_codes.R)
 
 
 .
