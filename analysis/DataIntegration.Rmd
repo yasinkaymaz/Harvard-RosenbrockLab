@@ -22,7 +22,7 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 ### 1. Obtain the data
 
 	473 single cell RNA-Seq samples from sorted mouse Th-eGFP+ dopaminergic neurons collected at two timepoints from three distinct brain regions.
-	
+
 #### SRA raw fastq files:
 
   Using sratoolkit, downloaded raw fastq files from [SRA](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP126648)
@@ -30,7 +30,7 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 #### Expression table deposited to GEO:
 
   For sanity check and quality control.
-  
+
 ```{bash}
 #wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE108nnn/GSE108020/suppl/GSE108020_fpkm_table.txt.gz
 #unzip GSE108020_fpkm_table.txt.gz
@@ -45,9 +45,12 @@ gds <- GEOquery::getGEO(filename = '~/data/GSE108020_series_matrix.txt.gz')
 ### 2. Filtration
 
   - Filter out cells that are found to be low quality in the Hook et al. resulting in 396 cells for downstream analysis.
-  
+
   - Filtered mitchondrial, ribosomal, and Gm-xxx genes as well as genes expressed less than 20 cells (same filtration applied in the paper).
-  
+
+  **In the analysis, I excluded E15.5 cells as requested by CNSDR and done the rest of analysis with only P7 mice cells.**
+
+
 
 ## Gene & Isoform level expression
 
@@ -64,7 +67,7 @@ Comprehensive gene annotation: 	ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencod
 Using Rsem-STAR pipeline, I aligned the reads to reference transcriptome and quantified isoforms (count, TPM).
 
 
-For the processing details, please follow 
+For the processing details, please follow
 Gene-level: [Code](https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/master/code/Rsem-Gene-counts.R)
 Isoform-level: [Code](https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/master/code/Rsem-Isoform-counts.R)
 

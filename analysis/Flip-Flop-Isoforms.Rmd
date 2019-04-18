@@ -37,7 +37,7 @@ plotdata <- cbind(Hook2018iso@meta.data,
                   t(as.matrix(Hook2018iso@data)[transcripts,]),
                   t(as.matrix(Hook2018gene@data)[c("Gria1","Gria2","Gria3","Gria4"),]))
 ```
-### Cumulative gene expression:
+## Cumulative gene expression:
 
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 #Plot Gene expressions
@@ -51,6 +51,8 @@ plotdata[,c("subset","Gria1","Gria2","Gria3","Gria4")] %>%
   theme(legend.position="top")
 ```
 This figure shows the distribution of normalized expression (log2) of each glutamate ionotropic receptor AMPA genes in each cell group identified by Hook et al. The horizontal lines in bars = Median, Red dots = outlier cells, 
+
+## Isoforms
 
 ### Gria1 Isoforms: 
 
