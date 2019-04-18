@@ -1,0 +1,238 @@
+---
+title: 'R Notebook: scISOr-Seq'
+output:
+  pdf_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(Seurat)
+setwd("~/data/Gupta/") # set working directory 
+
+rep1.data <- Read10X(data.dir = "P1Cereb_Rep1_Data/")
+
+rep1 <- CreateSeuratObject(raw.data = rep1.data, min.cells = 3, min.genes = 200,
+                           project = "scISOr_Seq_P1_CB")
+mito.genes <- grep(pattern = "^mt-", x = rownames(x = rep1@data), value = TRUE)
+percent.mito <- Matrix::colSums(rep1@raw.data[mito.genes, ])/Matrix::colSums(rep1@raw.data)
+rep1 <- AddMetaData(object = rep1, metadata = percent.mito, col.name = "percent.mito")
+
+hist(percent.mito,breaks=100,main="Mitochondrial gene expression % per cell(Replicate 1)"); 
+
+no.of.genes = colSums(rep1@raw.data>0)
+hist( no.of.genes ,breaks=100,main="No of genes per cell (Replicate 1)"); 
+abline(v=2500,col="red",lwd=1,lty=2)
+
+```
+
+Mitochondrial gene expression shows tight distribution, hence not selected for filtering. This is indicative of low cell death while sample preparation.
+
+On the other hand number of genes per cell has a much broader distribution and therefore a cutoff of 2500 genes per cell was chosen to filter out doublets.
+
+```{r}
+
+rep1= FilterCells(object = rep1, subset.names = c("nGene"),
+                  low.thresholds = c(200), high.thresholds = c(2500))
+
+rep1 <- NormalizeData(object = rep1, normalization.method = "LogNormalize",
+                      scale.factor = 10000)
+rep1 <- FindVariableGenes(object = rep1, mean.function = ExpMean, dispersion.function = LogVMR,
+                          x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
+
+rep1 <- ScaleData(object = rep1, vars.to.regress = c("nUMI", "percent.mito"))
+rep1 <- RunPCA(object = rep1, pc.genes = rep1@var.genes, do.print = F, pcs.print = 1:5,
+               genes.print = 2)
+
+VizPCA(object = rep1, pcs.use = 1:2)
+PCAPlot(object = rep1, dim.1 = 1, dim.2 = 2)
+PCHeatmap(object = rep1, pc.use = 1:12, cells.use = 500, do.balanced = TRUE,  label.columns = FALSE, use.full = FALSE)
+rep1 <- JackStraw(object =rep1, num.replicate = 20)
+JackStrawPlot(object = rep1, PCs = 1:20)
+PCElbowPlot(object = rep1)
+
+```
+
+``` {r}
+
+rep1 <- FindClusters(object = rep1, reduction.type = "pca", dims.use = 1:20,
+                     resolution = 0.6, print.output = 0, save.SNN = TRUE)
+
+rep1 <- RunTSNE(object = rep1, dims.use = 1:20, do.fast = TRUE)
+TSNEPlot(object = rep1)
+
+
+
+```
+
+In order to assign cell types to clusters we use the following genes - 
+For eGL cells = "Neurod1","Zic1"
+For Rhombic lip progenitors = "Ptf1a"
+For eGL progenitors = "Atoh1",
+For Astrocytes = "Hepacam","Apoe"
+For Bergmann glia (BG) = "Gdf10"
+For NPCs = "Tfap2b"
+For Endothelial cells ="Igfbp7", "Egfl7"
+For blood cells = "Hbb-bs"
+For Microglial cells = "C1qa","C1qb"
+For Oligodendrocyte progenitor cels (OPCs) = "Pdgfra"
+For iGL-DCN cells = "Gad1","Gad2","Pnoc","Lhx9","Tcf7l2"
+For Purkinje cels = "Pcp2","Pcp4","Necab2"
+
+```{r}
+lapply( c("Neurod1","Zic1","Ptf1a","Atoh1","Hepacam","Apoe","Gdf10","Tfap2b","Igfbp7","Egfl7","Hbb-bs","C1qa","Pdgfra","Gad1","Gad2","Pnoc","Lhx9","Tcf7l2","Pcp2","Pcp4","Necab2"), function(x)FeaturePlot(object = rep1, features.plot =x, do.return = F,cols.use = c("grey", "indianred1","indianred3","indianred4"), reduction.use = "tsne",pt.size = 1) )
+
+```
+
+According to the expression of these marker genes we assign the identities to the clusters as follows:
+
+```{r}
+rep1.current.cluster.ids <- as.character(unique(rep1@ident))
+rep1.new.cluster.ids = c( "IGL-DCN","BG",
+                          "Unclassified","EGL",
+                          "EGL","NPCs",
+                          "Astrocytes","Endothelial",
+                          "OPCs","IGL-DCN",
+                          "Astrocytes","Precursors_Atoh1+",
+                          "EGL","Precursors_Ptf1a+",
+                          "Blood_cells","PCL",
+                          "PCL","Microglia"
+)
+
+library(plyr)
+rep1@ident <- plyr::mapvalues(x = rep1@ident, 
+                              from = rep1.current.cluster.ids, 
+                              to = rep1.new.cluster.ids)
+
+TSNEPlot(object = rep1)
+```
+
+
+Working with 2nd replicate now.
+
+```{r}
+rep2.data <- Read10X(data.dir = "~/Desktop/ScISOr-Seq2/ScISOr-Seq2-P1Cereb-20171020/rep2.outs/mm10")
+rep2 <- CreateSeuratObject(raw.data = rep2.data, min.cells = 3, min.genes = 200,
+                           project = "scISOr_Seq_P1_CB")
+mito.genes <- grep(pattern = "^mt-", x = rownames(x = rep2@data), value = TRUE)
+percent.mito2 <- Matrix::colSums(rep2@raw.data[mito.genes, ])/Matrix::colSums(rep2@raw.data)
+
+hist(percent.mito2,breaks=100,main="Mitochondrial gene expression % per cell(Replicate 2)"); 
+abline(v=0.15,col="red",lty=2)
+
+no.of.genes2 = colSums(rep2@raw.data>0)
+hist( no.of.genes2 ,breaks=100,main="No of genes per cell (Replicate 2)"); 
+rep2.hiThr = round(2500* (median(colSums(rep2@raw.data))/median(colSums(rep1@raw.data))),digits=-2)
+abline(v=rep2.hiThr,lty=2,col="red")
+
+rep2 <- AddMetaData(object = rep2, metadata = percent.mito2, col.name = "percent.mito")
+
+
+
+```
+
+For replicate 2, we see higher % mitochondrial gene expression per cell and we filter out cells 0.15 %. This might be indicative of potential dead cells. 
+We also see that genes per cell distribution for rep2 is shifted and we adjust cut off to filter doublets in replicate two by multiplying the cut-off of 2500 genes per cell in replicate 1 with the ratio of the medians of genes per cell in replicate 2 by median of genes per cell in replicate 1. This value is rounded to 2700 genes per cell.
+
+```{r}
+rep2= FilterCells(object = rep2, subset.names = c("nGene", "percent.mito"),
+                  low.thresholds = c(200, -Inf), high.thresholds = c(rep2.hiThr, 0.15))
+
+rep2 <- NormalizeData(object = rep2, normalization.method = "LogNormalize",
+                      scale.factor = 10000)
+rep2 <- FindVariableGenes(object = rep2, mean.function = ExpMean, dispersion.function = LogVMR,
+                          x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
+length(x = rep2@var.genes)
+rep2 <- ScaleData(object = rep2, vars.to.regress = c("nUMI", "percent.mito"))
+rep2 <- RunPCA(object = rep2, pc.genes = rep2@var.genes, do.print = F, pcs.print = 1:5,
+               genes.print = 2)
+
+VizPCA(object = rep2, pcs.use = 1:2)
+PCAPlot(object = rep2, dim.1 = 1, dim.2 = 2)
+PCHeatmap(object = rep2, pc.use = 1:12, cells.use = 500, do.balanced = TRUE,
+          label.columns = FALSE, use.full = FALSE)
+rep2 <- JackStraw(object =rep2, num.replicate = 100, do.print = FALSE)
+JackStrawPlot(object = rep2, PCs = 1:20)
+PCElbowPlot(object = rep2)
+rep2 <- FindClusters(object = rep2, reduction.type = "pca", dims.use = 1:20,
+                     resolution = 0.6, print.output = 0, save.SNN = TRUE,force.recalc = T)
+rep2 <- RunTSNE(object = rep2, dims.use = 1:20, do.fast = TRUE)
+TSNEPlot(object = rep2)
+
+```
+
+```{r}
+lapply( c("Neurod1","Zic1","Ptf1a","Atoh1","Hepacam","Apoe","Gdf10","Tfap2b","Igfbp7","Egfl7","Hbb-bs","C1qa","Pdgfra","Gad1","Gad2","Pnoc","Lhx9","Tcf7l2","Pcp2","Pcp4","Necab2"), function(x)FeaturePlot(object = rep2, features.plot =x, do.return = F,cols.use = c("grey", "indianred1","indianred3","indianred4"), reduction.use = "tsne",pt.size = 1) )
+
+```
+
+Reassigning clusters according to marker gene expression. Please note that we do not see blood cell markers in significant numbers in any of the cluster indicative of no blood cell contamination in the replicate 2.
+
+```{r}
+rep2.current.cluster.ids <- as.character(unique(rep2@ident))
+rep2.new.cluster.ids = c( "BG","IGL-DCN",
+                          "Precursors_Ptf1a+", "Astrocytes",
+                          "Endothelial","IGL-DCN",
+                          "EGL","Precursors_Atoh1+",
+                          "NPCs","Unclassified",
+                          "Microglia","EGL",
+                          "PCL", "Astrocytes",
+                          "Unclassified","OPCs",
+                          "PCL","Endothelial"
+)
+
+rep2@ident <- plyr::mapvalues(x = rep2@ident,  
+                              from = rep2.current.cluster.ids, 
+                              to = rep2.new.cluster.ids)
+TSNEPlot(rep2)
+```
+
+
+To compare cluster assignment using all the genes expressed in the cluster, we calculate the jaccard distance between the calculated marker genes for each cluster in replicate 1 vs marker genes for each cluster in replicate 2. 
+
+The jaccard distance between cluster_i and cluster_j is calculated as the ratio of the number of genes common between cluster_i & cluster_j (or set intersection) and the total number of of genes in cluster_i and cluster_j combined (or set union). A higher Jaccard index indicates that a large number of gene ids are shared between the clusters indicative of their similarity.
+
+```{r}
+calcJaccard = function(set1, set2){ 
+  length(intersect(set1,set2))/length(union(set1,set2)) 
+}
+
+rep1.markers <- FindAllMarkers(object = rep1, only.pos = TRUE, min.pct = 0.25,
+                               thresh.use = 0.25)
+
+rep2.markers <- FindAllMarkers(object = rep2, only.pos = TRUE, min.pct = 0.25,
+                               thresh.use = 0.25)
+
+# Names of clusters
+cluster.ids = c( "Astrocytes","BG","IGL-DCN","EGL","PCL",
+                 "Microglia","OPCs","Endothelial", "Precursors_Atoh1+","Precursors_Ptf1a+","NPCs")
+
+# Jaccard distance between clusters in replicate 1
+jc11 = sapply(cluster.ids, function(x) sapply(cluster.ids, function(y) calcJaccard( rep1.markers$gene[ rep1.markers$cluster==x], rep1.markers$gene[ rep1.markers$cluster==y])) )
+
+# Jaccard distance between clusters in replicate 2
+jc22 = sapply(cluster.ids, function(x) sapply(cluster.ids, function(y) calcJaccard( rep2.markers$gene[ rep2.markers$cluster==x], rep2.markers$gene[ rep2.markers$cluster==y])) )
+
+# Jaccard distance between clusters in replicate 1 and clusters in replicate 2
+jc12 = sapply(cluster.ids, function(x) sapply(cluster.ids, function(y) calcJaccard( rep1.markers$gene[ rep1.markers$cluster==x], rep2.markers$gene[ rep2.markers$cluster==y])) )
+
+library(pheatmap)
+pheatmap( jc11, cluster_cols = F,cluster_rows = F, display_numbers = T,main="Between clusters in Replicate 1")
+pheatmap( jc22, cluster_cols = F,cluster_rows = F, display_numbers = T,main="Between clusters in Replicate 2")
+pheatmap( jc12, cluster_cols = F,cluster_rows = F, display_numbers = T,main="Clusters in Replicate 1 vs Clusters in Replicate 2")
+
+```
+
+Above we see that the Jaccard index for off-diagonal comparisons between clusters within each replicate have a low value typically less than 0.1 and around 0.21-0.31 for similar cell types such as neuronal subtypes or progenitor cells such as (Atoh1+ and Ptf1a+ cells). However, when we compare the clusters between replicates, then jaccard indeces for comparing the same cluster in the two replicates is generally much higher typically around 0.5 or more, this value is however lower for progenitor cells, indicating higher gene expression noise.  
+
+```{r}
+ct = names(table(rep2@ident))
+ct.test= cor.test( as.numeric(table(rep1@ident)[ct]), as.numeric(table(rep2@ident)[ct]) )
+plot( as.numeric(table(rep1@ident)[ct]), as.numeric(table(rep2@ident)[ct]) ,xlab="replicate 1", ylab="replicate 2",main=sprintf("Cell type specific abundance. cor = %s cor.pval =%s",format(ct.test$estimate,digits=2), format(ct.test$p.value,digits=2)))
+abline(0,1)
+```
+
