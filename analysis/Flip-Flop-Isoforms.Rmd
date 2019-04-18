@@ -1,0 +1,143 @@
+---
+title: "Flip-Flop-Isoforms"
+author: "Yasin Kaymaz"
+date: "4/18/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(DT)
+require(reshape2)
+library(tidyverse)
+source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
+source("code/functions.R")
+Hook2018iso <- get(load("~/data/Hook2018iso.seurat.Robj"))
+Hook2018gene <- get(load("~/data/Hook2018gene.seurat.Robj"))
+pct.iso <- get(load("~/data/Hook_rsem_isoforms_Percent_matrix-Sub.Rdata"))
+#Flip - Flop isoforms
+ensids <- c("ENSMUST00000094179.10",
+            "ENSMUST00000036315.15",
+            "ENSMUST00000075316.9",
+            "ENSMUST00000107745.7",
+            "ENSMUST00000165288.1",
+            "ENSMUST00000076349.11",
+            "ENSMUST00000027020.12",
+            "ENSMUST00000063508.14")
+
+transcripts <- NULL
+for (id in ensids){
+  print(id)
+  transcripts <- c(transcripts,grep(pattern = id, x = rownames(Hook2018iso@data), value = TRUE))
+  print(transcripts)
+}
+
+plotdata <- cbind(Hook2018iso@meta.data,
+                  t(as.matrix(Hook2018iso@data)[transcripts,]),
+                  t(as.matrix(Hook2018gene@data)[c("Gria1","Gria2","Gria3","Gria4"),]))
+```
+### Cumulative gene expression:
+
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+#Plot Gene expressions
+plotdata[,c("subset","Gria1","Gria2","Gria3","Gria4")] %>%
+  melt() %>%
+  ggplot(aes(x=subset, y=value, fill=subset ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Genes")+
+  theme(legend.position="top")
+```
+This figure shows the distribution of normalized expression (log2) of each glutamate ionotropic receptor AMPA genes in each cell group identified by Hook et al. The horizontal lines in bars = Median, Red dots = outlier cells, 
+
+### Gria1 Isoforms: 
+
+**'hGluA1i Flip' = ENSMUST00000036315.15_Gria1-201**
+**'hGluA1o Flop' = ENSMUST00000094179.10_Gria1-202**
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+plotdata[,c("subset","ENSMUST00000036315.15_Gria1-201", "ENSMUST00000094179.10_Gria1-202")] %>%
+  melt() %>%
+  ggplot(aes(x=subset, y=value, fill=subset ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+```
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria1", x = rownames(Hook2018iso@data), value = TRUE)),],
+                   cluster_rows = F,show_colnames = F,cellheight = 10,
+                   annotation_col = plotdata[,c("age", "region", "Gria1")])
+```
+
+### Gria2 Isoforms: 
+
+**'hGluA2o Flop' = ENSMUST00000075316.9_Gria2-201**
+**'hGluA2i Q/R Mut Flip' = ENSMUST00000107745.7_Gria2-202**
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+plotdata[,c("subset","ENSMUST00000075316.9_Gria2-201","ENSMUST00000107745.7_Gria2-202")] %>%
+  melt() %>%
+  ggplot(aes(x=subset, y=value, fill=subset ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+```
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria2", x = rownames(Hook2018iso@data), value = TRUE)),],
+                   cluster_rows = F,show_colnames = F,cellheight = 10,
+                   annotation_col = plotdata[,c("age", "region", "Gria2")])
+```
+
+
+### Gria3 Isoforms: 
+
+**'hGluA3o Flop' = ENSMUST00000165288.1_Gria3-209**
+**'hGluA3i Flip' = ENSMUST00000076349.11_Gria3-201**
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+plotdata[,c("subset","ENSMUST00000165288.1_Gria3-209","ENSMUST00000076349.11_Gria3-201")] %>%
+  melt() %>%
+  ggplot(aes(x=subset, y=value, fill=subset ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+```
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria3", x = rownames(Hook2018iso@data), value = TRUE)),],
+                   cluster_rows = F,show_colnames = F,cellheight = 10,
+                   annotation_col = plotdata[,c("age", "region", "Gria3")])
+```
+
+### Gria4 Isoforms: 
+
+**'hGluA4o Flop' = ENSMUST00000027020.12_Gria4-201**
+**'hGluA4i Flip' = ENSMUST00000063508.14_Gria4-202**
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+plotdata[,c("subset","ENSMUST00000027020.12_Gria4-201","ENSMUST00000063508.14_Gria4-202")] %>%
+  melt() %>%
+  ggplot(aes(x=subset, y=value, fill=subset ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+```
+```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
+
+pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria4", x = rownames(Hook2018iso@data), value = TRUE)),],
+                   cluster_rows = F,show_colnames = F,cellheight = 10,
+                   annotation_col = plotdata[,c("age", "region", "Gria4")])
+
+                   
+```

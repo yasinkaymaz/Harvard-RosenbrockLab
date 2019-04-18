@@ -14,7 +14,7 @@ library(DT)
 library(tidyverse)
 source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/functions.R")
 #source("code/functions.R")
-Hook2018 <- get(load("~/data/Hook2018.seurat.Robj"))
+Hook2018gene <- get(load("~/data/Hook2018gene.seurat.Robj"))
 
 ```
 
@@ -29,24 +29,24 @@ Genes of interest are **"Gria1"**,**"Gria4"**,**"Grm4"**, and **"Gpr83"**.
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 genes <- c("Gria1","Gria4","Grm4", "Gpr83")
 
-Hook2018 <- SetAllIdent(Hook2018, id = "age")
-VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+Hook2018gene <- SetAllIdent(Hook2018gene, id = "age")
+VlnPlot(object = Hook2018gene, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
 ```
 
 ### Cells are grouped based on **brain region**
 
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 
-Hook2018 <- SetAllIdent(Hook2018, id = "region")
-VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+Hook2018gene <- SetAllIdent(Hook2018gene, id = "region")
+VlnPlot(object = Hook2018gene, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
 ```
 
 ### Cells are grouped based on **cell subset**
 
 ```{r echo=FALSE, fig.height=20, fig.width=10}
 
-Hook2018 <- SetAllIdent(Hook2018, id = "subset")
-VlnPlot(object = Hook2018, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
+Hook2018gene <- SetAllIdent(Hook2018gene, id = "subset")
+VlnPlot(object = Hook2018gene, features.plot = genes, use.raw = TRUE, y.log = TRUE,nCol = 1,x.lab.rot = T)
 
 ```
 

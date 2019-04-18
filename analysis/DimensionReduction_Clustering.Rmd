@@ -14,7 +14,7 @@ source("https://raw.githubusercontent.com/yasinkaymaz/cellRtools/master/main/fun
 ```
 
 ```{r echo=FALSE}
-load("~/data/Hook2018.seurat.Robj")
+load("~/data/Hook2018gene.seurat.Robj")
 ```
 
 ## Clustering analysis of all cells in the Hook 2018 study
@@ -32,26 +32,27 @@ Three brain regions cells are taken from:
 ![](Hook.cell.populations.png)
 
 
+**In the analysis, I excluded E15.5 cells as requested by CNSDR and done the rest of analysis with only P7 mice cells.**
+
+
 ### **PCA plots**
 
-#### Cells are colored by mouse age, brain region, and cell subsets, respectively.
+#### Cells are colored by mouse brain region, and cell subsets, respectively.
 
 ```{r echo=FALSE, fig.height=8, fig.width=10}
 
-PCAPlot(object = Hook2018,group.by="age",pt.size=2)
-PCAPlot(object = Hook2018,group.by="region",pt.size=2)
-PCAPlot(object = Hook2018,group.by="subset",pt.size=2)
+PCAPlot(object = Hook2018gene, group.by="region", pt.size=2)
+PCAPlot(object = Hook2018gene, group.by="subset", pt.size=2)
 ```
 
 
-### **tSNE plots**
+### **UMAP plots**
 
-#### Cells are colored by mouse age, brain region, and cell subsets, respectively.
+#### Cells are colored by mouse brain region, and cell subsets, respectively.
 
 ```{r echo=FALSE, fig.height=8, fig.width=10}
-TSNEPlot(object = Hook2018,group.by="age",pt.size=2)
-TSNEPlot(object = Hook2018,group.by="region",pt.size=2)
-TSNEPlot(object = Hook2018,group.by="subset",pt.size=2)
+DimPlot(Hook2018gene, reduction.use = "umap", group.by = "region", pt.size=2)
+DimPlot(Hook2018gene, reduction.use = "umap", group.by = "subset", pt.size=2)
 ```
 
 .
