@@ -201,6 +201,9 @@ $(document).ready(function () {
 <li>
   <a href="Isoform-Level-Contrasts.html">Isoform-Level-Contrasts</a>
 </li>
+<li>
+  <a href="Flip-Flop-Isoforms.html">Flip-Flop-Isoforms</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -250,7 +253,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-03-15
+<strong>Last updated:</strong> 2019-04-18
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -281,10 +284,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeb85db50f92b7abfe59ceb75be1f22b4077bd883btargetblankb85db50a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/b85db50f92b7abfe59ceb75be1f22b4077bd883b" target="_blank">b85db50</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtree2bd3ebbeb676f035c36441a1d1f11a3efcc6174btargetblank2bd3ebba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/yasinkaymaz/Harvard-RosenbrockLab/tree/2bd3ebbeb676f035c36441a1d1f11a3efcc6174b" target="_blank">2bd3ebb</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtreeb85db50f92b7abfe59ceb75be1f22b4077bd883btargetblankb85db50a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomyasinkaymazHarvardRosenbrockLabtree2bd3ebbeb676f035c36441a1d1f11a3efcc6174btargetblank2bd3ebba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -296,6 +299,38 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
     Ignored:    output/.DS_Store
+
+Untracked files:
+    Untracked:  code/Gupta_data_process.R
+    Untracked:  code/Hook_cellAnnotation_w-KI_rc.R
+    Untracked:  code/Rsem-Gene-counts.R
+    Untracked:  code/Rsem-Isoform-counts.R
+    Untracked:  code/guptaAnalysis.Rmd
+    Untracked:  docs/figure/Flip-Flop-Isoforms.Rmd/
+    Untracked:  output/FlipFlop-gene-isoforms.pdf
+    Untracked:  output/Heatmap-Percent-isoforms.pdf
+    Untracked:  output/Hook.predictions..prediction-crosscheck.pdf
+    Untracked:  output/Hook2018gene.plots.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank3.mode.-stats.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank3.prediction-crosscheck.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank3.prediction-probability-projection.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank3.prediction-quality.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank3.prediction-stats.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank4.mode.-stats.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank4.prediction-crosscheck.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank4.prediction-probability-projection.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank4.prediction-quality.pdf
+    Untracked:  output/Hook2018gene.rfcv.predictions.w-singleZeisel-rank4.prediction-stats.pdf
+    Untracked:  output/Hook2018iso.plots.pdf
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   code/WP_codes.R
+    Modified:   output/Gpr83.Isoplots.pdf
+    Modified:   output/Gria1.Isoplots.pdf
+    Modified:   output/Gria4.Isoplots.pdf
+    Modified:   output/Grm4.Isoplots.pdf
+    Modified:   output/Rplots.pdf
 
 </code></pre>
 <p>
@@ -334,6 +369,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/yasinkaymaz/Harvard-RosenbrockLab/4277c88db9d63b1865aa3348b9376f731b4b7d92/docs/index.html" target="_blank">4277c88</a>
+</td>
+<td>
+Yasin Kaymaz
+</td>
+<td>
+2019-03-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
