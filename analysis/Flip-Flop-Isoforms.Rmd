@@ -68,6 +68,7 @@ plotdata[,c("subset","ENSMUST00000036315.15_Gria1-201", "ENSMUST00000094179.10_G
   scale_fill_discrete(name = "Isoforms")+
   theme(legend.position="top")
 ```
+The heatmap shows the percent usage of each isoform in cells. Columns are cells and rows are all possible isoforms. Color scale from dark-blue to dark-red represent 0% to 100%. The green color annotation on top of the heatmap is the cumulative expression value for the given gene in that cell.
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria1", x = rownames(Hook2018iso@data), value = TRUE)),],
