@@ -1,3 +1,4 @@
+# This code is from: Gupta, Ishaan, Paul G. Collier, Bettina Haase, Ahmed Mahfouz, Anoushka Joglekar, Taylor Floyd, Frank Koopmans, et al. 2018. “Single-Cell Isoform RNA Sequencing Characterizes Isoforms in Thousands of Cerebellar Cells.” Nature Biotechnology, October. https://doi.org/10.1038/nbt.4259.
 library(Seurat)
 setwd("~/data/Gupta/") # set working directory
 
@@ -42,11 +43,16 @@ rep1 <- FindClusters(object = rep1, reduction.type = "pca", dims.use = 1:20,
 
 rep1 <- RunTSNE(object = rep1, dims.use = 1:20, do.fast = TRUE)
 TSNEPlot(object = rep1)
-
-save()
+Gupta2017 <- rep1
+rm(rep1)
+save(Gupta2017, file="~/data/Gupta2017.seurat.Robj")
+head(Gupta2017@meta.data)
 
 #Optional Cell annotation from the paper:
-lapply( c("Neurod1","Zic1","Ptf1a","Atoh1","Hepacam","Apoe","Gdf10","Tfap2b","Igfbp7","Egfl7","Hbb-bs","C1qa","Pdgfra","Gad1","Gad2","Pnoc","Lhx9","Tcf7l2","Pcp2","Pcp4","Necab2"), function(x)FeaturePlot(object = rep1, features.plot =x, do.return = F,cols.use = c("grey", "indianred1","indianred3","indianred4"), reduction.use = "tsne",pt.size = 1) )
+pdf("output/Gupta.tsne.markers.pdf",width = 10,height = 8)
+lapply( c("Neurod1","Zic1","Ptf1a","Atoh1","Hepacam","Apoe","Gdf10","Tfap2b","Igfbp7","Egfl7","Hbb-bs","C1qa","Pdgfra","Gad1","Gad2","Pnoc","Lhx9","Tcf7l2","Pcp2","Pcp4","Necab2"), function(x)FeaturePlot(object = Gupta2017, features.plot =x, do.return = F,cols.use = c("grey", "indianred1","indianred3","indianred4"), reduction.use = "tsne",pt.size = 1) )
+dev.off()
+
 rep1.current.cluster.ids <- as.character(unique(rep1@ident))
 rep1.new.cluster.ids = c( "IGL-DCN","BG",
                           "Unclassified","EGL",
