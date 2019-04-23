@@ -49,6 +49,16 @@ plotdata[,c("subset","Gria1","Gria2","Gria3","Gria4")] %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
   scale_fill_discrete(name = "Genes")+
   theme(legend.position="top")
+
+plotdata[,c("Prediction","Gria1","Gria2","Gria3","Gria4")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Genes")+
+  theme(legend.position="top")
+
 ```
 This figure shows the distribution of normalized expression (log2) of each glutamate ionotropic receptor AMPA genes in each cell group identified by Hook et al. The horizontal lines in bars = Median, Red dots = outlier cells, 
 
@@ -67,13 +77,22 @@ plotdata[,c("subset","ENSMUST00000036315.15_Gria1-201", "ENSMUST00000094179.10_G
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
   scale_fill_discrete(name = "Isoforms")+
   theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000036315.15_Gria1-201", "ENSMUST00000094179.10_Gria1-202")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
 ```
 The heatmap shows the percent usage of each isoform in cells. Columns are cells and rows are all possible isoforms. Color scale from dark-blue to dark-red represent 0% to 100%. The green color annotation on top of the heatmap is the cumulative expression value for the given gene in that cell.
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria1", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria1")])
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria1")])
 ```
 
 ### Gria2 Isoforms: 
@@ -90,12 +109,21 @@ plotdata[,c("subset","ENSMUST00000075316.9_Gria2-201","ENSMUST00000107745.7_Gria
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
   scale_fill_discrete(name = "Isoforms")+
   theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000075316.9_Gria2-201","ENSMUST00000107745.7_Gria2-202")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
 ```
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria2", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria2")])
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria2")])
 ```
 
 
@@ -113,12 +141,21 @@ plotdata[,c("subset","ENSMUST00000165288.1_Gria3-209","ENSMUST00000076349.11_Gri
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
   scale_fill_discrete(name = "Isoforms")+
   theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000165288.1_Gria3-209","ENSMUST00000076349.11_Gria3-201")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
 ```
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria3", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria3")])
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria3")])
 ```
 
 ### Gria4 Isoforms: 
@@ -135,12 +172,21 @@ plotdata[,c("subset","ENSMUST00000027020.12_Gria4-201","ENSMUST00000063508.14_Gr
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
   scale_fill_discrete(name = "Isoforms")+
   theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000027020.12_Gria4-201","ENSMUST00000063508.14_Gria4-202")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(title="", y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
 ```
 ```{r echo=FALSE, fig.height=5, fig.width=10, message=FALSE, warning=FALSE}
 
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria4", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria4")])
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria4")])
 
                    
 ```
