@@ -72,3 +72,58 @@ rep1@ident <- plyr::mapvalues(x = rep1@ident,
 
 TSNEPlot(object = rep1)
 
+#Annotate cells with scmap:
+library(SingleCellExperiment)
+library(scmap)
+Gupta2017 <- get(load("~/data/Gupta2017.seurat.Robj"))
+
+#Import training data:
+zeisel.rank4.sub47 <- get(load("~/data/zeisel.rank4.sub47.seurat.Robj"))
+ann <- as.data.frame(zeisel.rank4.sub47@meta.data[,c("TaxonomyRank4")])
+rownames(ann) <- rownames(zeisel.rank4.sub47@meta.data)
+colnames(ann) <- "cell_type1"
+head(ann)
+yan <- as.matrix(zeisel.rank4.sub47@data)
+yan[1:3, 1:3]
+
+sce <- SingleCellExperiment(assays = list(normcounts = as.matrix(yan)), colData = ann)
+logcounts(sce) <- normcounts(sce) ### Skipping this singe my data is in log2 already.
+rowData(sce)$feature_symbol <- rownames(sce)
+# remove features with duplicated names
+sce <- sce[!duplicated(rownames(sce)), ]
+sce
+
+#Select features:
+sce <- selectFeatures(sce, suppress_plot = FALSE)
+table(rowData(sce)$scmap_features)
+sce <- indexCluster(sce)
+head(metadata(sce)$scmap_cluster_index)
+heatmap(as.matrix(metadata(sce)$scmap_cluster_index))
+
+Gupta2017.sce <- as.SingleCellExperiment(from = Gupta2017)
+rowData(Gupta2017.sce)$feature_symbol <- rownames(Gupta2017.sce)
+assays(Gupta2017.sce)$logcounts <- as.matrix(assays(Gupta2017.sce)$logcounts)
+#Projection
+scmapCluster_results <- scmapCluster(threshold = 0.5,
+                                     projection = Gupta2017.sce,
+                                     index_list = list(
+                                       yan = metadata(sce)$scmap_cluster_index
+                                     )
+)
+
+plot(
+  getSankey(
+    colData(Gupta2017.sce)$Prior,
+    scmapCluster_results$scmap_cluster_labs[,'yan'],
+    plot_height = 1400
+  )
+)
+
+PriorPosttable <- data.frame(Prior=colData(Gupta2017.sce)$Prior, Prediction=scmapCluster_results$scmap_cluster_labs[,'yan'])
+head(PriorPosttable)
+CrossCheck(PriorPostTable = PriorPosttable, outputprefix = "output/Gupta2017.sce")
+save(PriorPosttable, file="~/data/PriorPosttable.Gupta2017scemap.Rdata")
+
+Gupta2017@meta.data$scemapPred <- scmapCluster_results$scmap_cluster_labs[,'yan']
+head(Gupta2017@meta.data)
+save(Gupta2017, file="~/data/Gupta2017.seurat.Robj")

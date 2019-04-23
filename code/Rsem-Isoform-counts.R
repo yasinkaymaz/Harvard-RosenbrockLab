@@ -9,13 +9,14 @@ dim(iso.exp)
 
 
 gds <- GEOquery::getGEO(filename = '~/data/GSE108020_series_matrix.txt.gz')
-meta <- data.frame(row.names = gds@phenoData@data[["geo_accession"]],
+meta <- data.frame(row.names = str_replace(gds@phenoData@data[["relation"]],"BioSample: https://www.ncbi.nlm.nih.gov/biosample/",""),
+                   SAMid = str_replace(gds@phenoData@data[["relation"]],"BioSample: https://www.ncbi.nlm.nih.gov/biosample/",""),
+                   sampnames = paste(gds@phenoData@data[["project:ch1"]],"_0",gds@phenoData@data[["correct_source_plate:ch1"]],"_",gds@phenoData@data[["well:ch1"]], sep = ""),
                    Sample_Name=gds@phenoData@data[["geo_accession"]],
                    qc=gds@phenoData@data[["passed_qc:ch1"]],
                    age=gds@phenoData@data[["age:ch1"]],
                    region=gds@phenoData@data[["region:ch1"]],
                    subset=gds@phenoData@data[["subset.cluster:ch1"]])
-
 #Filter cells:
 head(meta)
 #Filter out low quality cell data as explained in the Hook et al.
@@ -26,6 +27,10 @@ meta <- meta[meta$age == "P7",]
 cells.pass <- rownames(meta)
 iso.exp <- iso.exp[,which(colnames(iso.exp) %in% cells.pass)]
 
+#Add cell type annotation to the meta data
+celltypes <- get(load("~/data/PriorPosttable.Hook2scemap.Rdata"))
+head(celltypes)
+meta <- cbind(meta, celltypes)
 dim(meta)
 dim(iso.exp)
 
@@ -114,28 +119,72 @@ plotdata[,c("subset","ENSMUST00000027020.12_Gria4-201","ENSMUST00000063508.14_Gr
   theme(legend.position="top")
 dev.off()
 
-pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria1", x = rownames(Hook2018iso@data), value = TRUE)),],
-                   cluster_rows = F,height = 15,
-                   show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria1")]
-)
 
-pdf("output/Heatmap-Percent-isoforms.pdf",width = 12,height = 4)
+#plots
+pdf("output/FlipFlop-gene-isoforms-PredictionGrouped.pdf",width = 10,height = 5)
+#Plot Gene expressions
+plotdata[,c("Prediction","Gria1","Gria2","Gria3","Gria4")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Genes")+
+  theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000094179.10_Gria1-202","ENSMUST00000036315.15_Gria1-201")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000075316.9_Gria2-201","ENSMUST00000107745.7_Gria2-202")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000165288.1_Gria3-209","ENSMUST00000076349.11_Gria3-201")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+
+plotdata[,c("Prediction","ENSMUST00000027020.12_Gria4-201","ENSMUST00000063508.14_Gria4-202")] %>%
+  melt() %>%
+  ggplot(aes(x=Prediction, y=value, fill=Prediction ))+
+  geom_boxplot(aes(fill=variable),notch=FALSE,outlier.colour="red")+
+  labs(y="Normalized Expression")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))+
+  scale_fill_discrete(name = "Isoforms")+
+  theme(legend.position="top")
+dev.off()
+
+pdf("output/Heatmap-Percent-isoforms.pdf",width = 12,height = 8)
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria1", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria1")]
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria1")]
                    )
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria2", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria2")]
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria2")]
 )
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria3", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria3")]
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria3")]
 )
 pheatmap::pheatmap(pct.iso[c(grep(pattern = "Gria4", x = rownames(Hook2018iso@data), value = TRUE)),],
                    cluster_rows = F,show_colnames = F,cellheight = 10,
-                   annotation_col = plotdata[,c("age", "region", "Gria4")]
+                   annotation_col = plotdata[,c("Prediction", "region", "Gria4")]
 )
 dev.off()
 

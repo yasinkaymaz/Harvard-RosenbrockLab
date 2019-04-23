@@ -21,12 +21,13 @@ dim(exp)
 
 gds <- GEOquery::getGEO(filename = '~/data/GSE108020_series_matrix.txt.gz')
 meta <- data.frame(row.names = str_replace(gds@phenoData@data[["relation"]],"BioSample: https://www.ncbi.nlm.nih.gov/biosample/",""),
+                   SAMid = str_replace(gds@phenoData@data[["relation"]],"BioSample: https://www.ncbi.nlm.nih.gov/biosample/",""),
+                   sampnames = paste(gds@phenoData@data[["project:ch1"]],"_0",gds@phenoData@data[["correct_source_plate:ch1"]],"_",gds@phenoData@data[["well:ch1"]], sep = ""),
                    Sample_Name=gds@phenoData@data[["geo_accession"]],
                    qc=gds@phenoData@data[["passed_qc:ch1"]],
                    age=gds@phenoData@data[["age:ch1"]],
                    region=gds@phenoData@data[["region:ch1"]],
                    subset=gds@phenoData@data[["subset.cluster:ch1"]])
-
 #Filter cells:
 head(meta)
 #Filter out low quality cell data as explained in the Hook et al.
@@ -36,7 +37,10 @@ meta <- meta[meta$age == "P7",]
 
 cells.pass <- rownames(meta)
 exp <- exp[,which(colnames(exp) %in% cells.pass)]
-
+#Add cell type annotation to the meta data
+celltypes <- get(load("~/data/PriorPosttable.Hook2scemap.Rdata"))
+head(celltypes)
+meta <- cbind(meta, celltypes)
 dim(meta)
 dim(exp)
 
